@@ -2,8 +2,192 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent" tools:context=".MainActivity">
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent" />
+
+    <!--RelativeLayout basically removes the need for nesting, and instead lets me make a blueprint,
+    using anchors and then elements which link to anchored elements, and it will change as per needed
+    https://developer.android.com/guide/topics/ui/layout/relative -->
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
+        android:background="@drawable/rounded_edges_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/two"
+            android:layout_marginLeft="0dp"
+            android:text="Week"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/one"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="0dp"
+            android:text="Date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/two"
+            android:layout_alignLeft="@id/two"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-1dp"
+            android:text="Day"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="10sp" />
+
+
+
+        <TextView
+            android:id="@+id/week_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/one"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/one"
+            android:text="Week"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/week_text"
+            android:layout_alignTop="@id/two"
+            android:layout_toRightOf="@id/two"
+            android:text="Date"
+
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/day_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/date_text"
+            android:layout_alignTop="@id/three"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@id/three"
+            android:text="Day"
+            android:textSize="14sp" />
+
+
+
+        <TextView
+            android:id="@+id/space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_toRightOf="@id/date_text"
+            android:layout_alignTop="@id/one"
+            android:layout_alignBottom="@id/three"
+
+
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginVertical="20dp"
+            />
+
+        <TextView
+            android:id="@+id/four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/one"
+            android:layout_toRightOf="@id/space"
+            android:text="Cook"
+
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="10sp" />
+
+
+        <TextView
+            android:id="@+id/five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/four"
+
+            android:layout_alignTop="@id/two"
+            android:layout_toRightOf="@id/space"
+            android:text="Recipe"
+
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="10sp" />
+
+
+        <TextView
+            android:id="@+id/six"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/four"
+
+            android:layout_alignTop="@id/three"
+            android:layout_toRightOf="@id/space"
+            android:text="Duration"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/cook_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/duration_text"
+            android:layout_alignTop="@id/four"
+            android:layout_toRightOf="@id/four"
+            android:text="Cook"
+
+
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/recipe_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/duration_text"
+            android:layout_alignTop="@id/five"
+            android:layout_toRightOf="@id/five"
+            android:text="Recipe"
+
+
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/duration_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/six"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/six"
+            android:text="Duration"
+
+            android:textSize="14sp" />
+
+
+
+
+
+
+
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
