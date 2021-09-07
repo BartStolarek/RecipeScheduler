@@ -174,7 +174,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/today_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -184,13 +184,13 @@
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cookbook_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Cook Book"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/today_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
