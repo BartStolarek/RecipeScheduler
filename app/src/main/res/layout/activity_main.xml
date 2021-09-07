@@ -30,7 +30,7 @@
             android:layout_marginLeft="0dp"
             android:text="Week"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="10sp" />
+             />
 
         <TextView
             android:id="@+id/two"
@@ -41,7 +41,7 @@
             android:layout_marginTop="0dp"
             android:text="Date"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="10sp" />
+             />
 
         <TextView
             android:id="@+id/three"
@@ -53,7 +53,7 @@
             android:layout_marginTop="-1dp"
             android:text="Day"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="10sp" />
+             />
 
 
 
@@ -65,7 +65,7 @@
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@id/one"
             android:text="Week"
-            android:textSize="14sp" />
+             />
 
         <TextView
             android:id="@+id/date_text"
@@ -76,7 +76,7 @@
             android:layout_toRightOf="@id/two"
             android:text="Date"
 
-            android:textSize="14sp" />
+             />
 
         <TextView
             android:id="@+id/day_text"
@@ -88,7 +88,7 @@
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@id/three"
             android:text="Day"
-            android:textSize="14sp" />
+             />
 
 
 
@@ -116,7 +116,7 @@
 
 
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="10sp" />
+             />
 
 
         <TextView
@@ -131,7 +131,7 @@
 
 
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="10sp" />
+             />
 
 
         <TextView
@@ -144,7 +144,7 @@
             android:layout_toRightOf="@id/space"
             android:text="Duration"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="10sp" />
+             />
 
         <TextView
             android:id="@+id/cook_text"
@@ -156,7 +156,7 @@
             android:text="Cook"
 
 
-            android:textSize="14sp" />
+             />
 
         <TextView
             android:id="@+id/recipe_text"
@@ -168,7 +168,7 @@
             android:text="Recipe"
 
 
-            android:textSize="14sp" />
+            />
 
         <TextView
             android:id="@+id/duration_text"
@@ -179,7 +179,7 @@
             android:layout_toRightOf="@id/six"
             android:text="Duration"
 
-            android:textSize="14sp" />
+             />
 
 
 
