@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "31.0.0"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.0"
 
     defaultConfig {
         applicationId "com.system.recipescheduler"
         minSdkVersion 30
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -26,14 +26,31 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+}
+repositories { mavenCentral() }
 dependencies {
 
+    //implementation group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.7.2'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
+
+
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.7.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api',version:'5.7.2'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-core', version: '1.3'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.12.4'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.12.4'
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
+
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }
