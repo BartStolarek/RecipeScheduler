@@ -3,6 +3,7 @@ package com.system.recipescheduler.database;
 import android.annotation.SuppressLint;
 import android.os.StrictMode;
 import android.util.Log;
+import java.sql.Driver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,12 +11,12 @@ import java.sql.DriverManager;
 public class ConnectionHelper {
     //TODO: need to create the SQL database on microsofts sql database server thing
     //https://www.youtube.com/watch?v=dYt763QgaTg
-    Connection con;
+    Connection connection;
     String uname, pass, ip, port, database;
 
     @SuppressLint("NewApi")
     public Connection Connectionclass(){
-        ip = "172.1.1.0";
+        ip = "172.1.1.0"; //Could be 172.1.2.0
         database="";
         uname="bartjs";
         pass="fusion93";
@@ -24,17 +25,20 @@ public class ConnectionHelper {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Connection connection = null;
+        connection = null;
 
         String ConnectionURL = null;
 
         try{
-
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            try {
+                Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            }catch(Exception error){
+                Log.e("Class.forName error:",error.getMessage());
+            }
             ConnectionURL= "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+ "databasename="+ database+";user="+uname+";password="+pass+";";
             connection = DriverManager.getConnection(ConnectionURL);
         }catch(Exception e){
-            Log.e("Error ", e.getMessage());
+            Log.e("Connection Error is ", e.getMessage());
         }
 
         return connection;

@@ -1,6 +1,7 @@
  package com.system.recipescheduler;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -68,31 +69,7 @@ import java.util.Locale;
     }
 
 
-    //TODO: This is the method to connection to SQL server using the ConnectionHelper class
-    //Learnt from: https://www.youtube.com/watch?v=dYt763QgaTg
-    /*
-    public void GetTextFromSQL(View v){
-        TextView tx1 = (TextView) findViewById(R.id.textView);
-        TextView tx2 = (TextView) findViewById(R.id.textView);
-        try{
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            Connection connect = connectionHelper.Connectionclass();
-            if(connect!=null){
-                String query = "SELECT * from table_name";
-                Statement st=connect.createStatement();
-                ResultSet rs = st.executeQuery(query);
 
-                while(rs.next()){
-                    tx1.setText(rs.getString(1));
-                }
-            }else{
-                //ConnectionResult="Check Connection";
-            }
-        }catch(Exception e){
 
-        }
-
-    }
-    */
 
 }
