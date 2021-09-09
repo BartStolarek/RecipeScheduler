@@ -27,6 +27,7 @@ public class cookbookActivity extends AppCompatActivity {
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Button clicked registered");
                 GetTextFromSQL(v);
             }
         });
@@ -42,8 +43,10 @@ public class cookbookActivity extends AppCompatActivity {
         recipeID_text = findViewById(R.id.recipeID_text);
         recipe_name_text = findViewById(R.id.recipe_name_text);
         recipe_duration_text = findViewById(R.id.recipe_duration_text);
+        System.out.println("activity ID's have been assigned");
         try{
             ConnectionHelper connectionHelper = new ConnectionHelper();
+            System.out.println("Establishing connection..");
             Connection connect = connectionHelper.Connectionclass();
             if(connect!=null){
                 String query = "SELECT * from recipes";
