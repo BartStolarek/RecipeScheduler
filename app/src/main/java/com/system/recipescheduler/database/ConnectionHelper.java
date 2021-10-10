@@ -17,7 +17,7 @@ public class ConnectionHelper {
     @SuppressLint("NewApi")
     public Connection Connectionclass(){
         System.out.println("Inside connection class");
-        ip = "192.168.1.181"; //Could be 172.1.2.0
+        ip = "10.0.2.2"; //Could be 172.1.2.0
         database="RecipeSchedulerDb";
         uname="bartjs";
         pass="fusion93";
@@ -41,7 +41,7 @@ public class ConnectionHelper {
             ConnectionURL= "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+ "databasename="+ database+";user="+uname+";password="+pass+";";
 
             connection = DriverManager.getConnection(ConnectionURL);
-            System.out.println("Used drivermanager to get connection via connection URL ");
+            System.out.println("Used DriverManager to get connection via connection URL ");
         }catch(Exception e){
             Log.e("Connection Error is ", e.getMessage());
         }
