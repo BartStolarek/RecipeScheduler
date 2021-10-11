@@ -17,7 +17,7 @@ public class ConnectionHelper {
     @SuppressLint("NewApi")
     public Connection Connectionclass(){
         System.out.println("Inside connection class");
-        ip = "10.0.2.2"; //Could be 172.1.2.0
+        ip = "10.0.2.2"; //Got 10.0.2.2 from here: https://stackoverflow.com/questions/44790597/android-database-network-error-ioexception
         database="RecipeSchedulerDb";
         uname="bartjs";
         pass="fusion93";
