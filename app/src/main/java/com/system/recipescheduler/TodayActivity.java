@@ -5,7 +5,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class todayActivity extends AppCompatActivity {
+public class TodayActivity extends AppCompatActivity {
 
 
 

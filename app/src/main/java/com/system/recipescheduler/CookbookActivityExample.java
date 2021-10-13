@@ -12,8 +12,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class cookbookActivity extends AppCompatActivity {
-
+public class CookbookActivityExample extends AppCompatActivity {
+/*
     TextView recipeID_text, recipe_name_text, recipe_duration_text;
     Button update_button;
 
@@ -69,4 +69,6 @@ public class cookbookActivity extends AppCompatActivity {
         }
 
     }
+
+ */
 }

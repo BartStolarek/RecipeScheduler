@@ -1,17 +1,12 @@
  package com.system.recipescheduler;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.system.recipescheduler.database.ConnectionHelper;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,7 +44,7 @@ import java.util.Locale;
         today_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, todayActivity.class);
+                Intent intent = new Intent(MainActivity.this, TodayActivity.class);
                 startActivity(intent);
 
             }
@@ -58,7 +53,7 @@ import java.util.Locale;
         cookbook_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, cookbookActivity.class);
+                Intent intent = new Intent(MainActivity.this, CookbookActivity.class);
                 startActivity(intent);
 
             }

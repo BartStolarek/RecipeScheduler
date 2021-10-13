@@ -19,15 +19,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".todayActivity"
+        <activity android:name=".TodayActivity"
             android:label="Today's Recipe"
             android:parentActivityName=".MainActivity"
             />
 
 
-        <activity android:name=".cookbookActivity"
+        <activity android:name=".CookbookActivity"
             android:label="Cook Book"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            />
+
+        <activity android:name=".AddRecipeActivity"
+            android:label="Add Recipe"
+            android:parentActivityName=".CookbookActivity"
+            />
     </application>
 
 </manifest>

@@ -1,7 +1,7 @@
 package com.system.recipescheduler;
 
 import android.content.Context;
-import com.system.recipescheduler.database.MyDatabaseHelper;
+import com.system.recipescheduler.database.MyDatabaseHelperExample;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -25,11 +25,11 @@ class MyDatabaseHelperTest {
     @Mock
     Context context;
 
-    private MyDatabaseHelper helperTest;
+    private MyDatabaseHelperExample helperTest;
 
     @BeforeEach
     void setUp() {
-        helperTest = new MyDatabaseHelper(context);
+        helperTest = new MyDatabaseHelperExample(context);
     }
 
     @Disabled
