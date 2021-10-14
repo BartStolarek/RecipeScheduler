@@ -82,10 +82,10 @@ public class MyDatabaseHelper {
                 TimeUnit.MILLISECONDS.toMinutes(time) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)),
                 TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
 
-        if(name.length()>50){
-            Toast.makeText(context, "Failed - name too long (50 characters)", Toast.LENGTH_SHORT).show();
-        }else if(health_rating<0 || health_rating > 5){
-            Toast.makeText(context, "Failed - health rating must be between 0 and 5", Toast.LENGTH_SHORT).show();
+        if(name.length()>250){
+            Toast.makeText(context, "Failed - name too long (250 characters)", Toast.LENGTH_SHORT).show();
+        }else if(health_rating<1 || health_rating > 3){
+            Toast.makeText(context, "Failed - health rating must be 1-3 (inclusive)", Toast.LENGTH_SHORT).show();
         }else if(category.length()>10){
             Toast.makeText(context, "Failed - category too long (10 characters)", Toast.LENGTH_SHORT).show();
         }else if(favourite<0 || favourite > 1){

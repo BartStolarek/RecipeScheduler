@@ -39,6 +39,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/name_txt" />
 
             <TextView
+                android:id="@+id/health_rating_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health Rating"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/duration_txt"
+                app:layout_constraintStart_toEndOf="@+id/name_txt"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/duration_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

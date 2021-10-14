@@ -32,8 +32,8 @@ public class CookbookActivity extends AppCompatActivity {
     TextView no_data;
 
     MyDatabaseHelper myDB;
-    ArrayList<String> book_id, book_title, book_author, book_pages;
-    ArrayList<String> name, favourite, duration, category;
+
+    ArrayList<String> name, favourite, duration, category, health_rating;
     CustomAdapter customAdapter;
 
     @Override
@@ -55,21 +55,23 @@ public class CookbookActivity extends AppCompatActivity {
         });
 
         myDB = new MyDatabaseHelper(CookbookActivity.this);
-        book_id = new ArrayList<>();
-        book_title = new ArrayList<>();
-        book_author = new ArrayList<>();
-        book_pages = new ArrayList<>();
 
         name = new ArrayList<>();
         favourite = new ArrayList<>();
         duration = new ArrayList<>();
         category = new ArrayList<>();
+        health_rating = new ArrayList<>();
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(CookbookActivity.this,this, name, favourite, duration,
-                category);
+
+        customAdapter = new CustomAdapter(CookbookActivity.this, this, name, favourite, duration,
+                category, health_rating);
+
+
+
         recyclerView.setAdapter(customAdapter);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(CookbookActivity.this));
 
 
@@ -98,6 +100,7 @@ public class CookbookActivity extends AppCompatActivity {
                         favourite.add(rs.getString("favourite"));
                         duration.add(rs.getString("duration"));
                         category.add(rs.getString("category"));
+                        health_rating.add(rs.getString("health_rating"));
                     } while (rs.next());
 
                 }
