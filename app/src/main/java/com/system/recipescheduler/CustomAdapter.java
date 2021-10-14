@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -47,18 +50,34 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         String arrName[] = String.valueOf(name.get(position)).split("with",2);
-        System.out.println(Arrays.toString(arrName));
         holder.name_txt.setText(arrName[0].trim());
-        String fav = String.valueOf(favourite.get(position));
-        if(fav.equals("1")) {
+        if(String.valueOf(favourite.get(position)).equals("1")) {
             holder.favourite_img.setVisibility(View.VISIBLE);
         }else{
             holder.favourite_img.setVisibility(View.GONE);
         }
 
-        holder.duration_txt.setText(String.valueOf(duration.get(position)));
-        holder.category_txt.setText(String.valueOf(category.get(position)));
-        holder.health_rating_txt.setText(String.valueOf(health_rating.get(position)));
+        String arrDuration[] = String.valueOf(duration.get(position)).trim().split(":",3);
+
+        int dur = Integer.parseInt(arrDuration[0])*60 + Integer.parseInt(arrDuration[1]);
+
+
+
+        holder.duration_txt.setText(String.format("%s minutes",dur));
+
+        holder.category_txt.setText(String.valueOf(category.get(position)).trim());
+        String health_str;
+        if(String.valueOf(health_rating.get(position)).trim().equals("1")){
+            health_str = String.valueOf(health_rating.get(position)).trim() + " (Abusive)";
+        }else if(String.valueOf(health_rating.get(position)).trim().equals("2")){
+            health_str = String.valueOf(health_rating.get(position)).trim() + " (Unhealthy)";
+        }else if((String.valueOf(health_rating.get(position)).trim().equals("3"))){
+            health_str = String.valueOf(health_rating.get(position)).trim() + " (Healthy)";
+        }else{
+            health_str = " ";
+        }
+
+        holder.health_rating_txt.setText(health_str);
         //Recyclerview onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
