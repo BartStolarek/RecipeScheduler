@@ -82,7 +82,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, UpdateRecipeActivity.class);
+                Intent intent = new Intent(context, RecipeActivity.class);
                 intent.putExtra("name", String.valueOf(name.get(position)));
                 intent.putExtra("favourite", String.valueOf(favourite.get(position)));
                 intent.putExtra("duration", String.valueOf(duration.get(position)));

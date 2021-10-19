@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionHelper {
-    //TODO: need to create the SQL database on microsofts sql database server thing
+
     //https://www.youtube.com/watch?v=dYt763QgaTg
     Connection connection;
     String uname, pass, ip, port, database;

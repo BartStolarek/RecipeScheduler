@@ -1,21 +1,16 @@
 package com.system.recipescheduler.database;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
-import com.system.recipescheduler.R;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.DoubleStream;
 
@@ -71,8 +66,29 @@ public class MyDatabaseHelper {
      */
 
 
+    public boolean recipeNameDuplicates(String name)  {
+        boolean duplicate = false;
+        try {
+            connect = connectToDb();
+            String query = String.format("SELECT name FROM recipes WHERE name LIKE '%%%s%%'",name);
+            ResultSet rs = null;
+            Statement st = connect.createStatement();
+            rs = st.executeQuery(query);
+
+            if(rs.next()){
+                duplicate = true;
+
+            }
+            connect.close();
+        }catch(Exception e){
+            Log.e("checkRecipeNameDuplicate Error: ", e.getMessage());
+        }
+
+        System.out.println(String.format("recipeNameDuplicates Success: duplicate exists - %s", duplicate));
+        return duplicate;
+    }
     @SuppressLint("DefaultLocale")
-    public void addRecipe(String name, int health_rating, String duration, String category, int favourite){
+    public void addRecipe(String name, int health_rating, String duration, String category, int favourite, ImageView instructions)  {
 
         int time = Integer.parseInt(duration);
         time = time * 60 * 1000;
@@ -82,8 +98,16 @@ public class MyDatabaseHelper {
                 TimeUnit.MILLISECONDS.toMinutes(time) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(time)),
                 TimeUnit.MILLISECONDS.toSeconds(time) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(time)));
 
-        if(name.length()>250){
+        BitmapDrawable instructions_drawable = (BitmapDrawable) instructions.getDrawable();
+        Bitmap instructions_bitmap = instructions_drawable.getBitmap();
+        ByteArrayOutputStream instructions_byteArrayOutputStream = new ByteArrayOutputStream();
+        instructions_bitmap.compress(Bitmap.CompressFormat.PNG,0,instructions_byteArrayOutputStream);
+        byte[] instructions_bytesImage = instructions_byteArrayOutputStream.toByteArray();
+
+        if(name.length()>250) {
             Toast.makeText(context, "Failed - name too long (250 characters)", Toast.LENGTH_SHORT).show();
+        }else if(recipeNameDuplicates(name)){
+            Toast.makeText(context, "Failed - duplicate name", Toast.LENGTH_SHORT).show();
         }else if(health_rating<1 || health_rating > 3){
             Toast.makeText(context, "Failed - health rating must be 1-3 (inclusive)", Toast.LENGTH_SHORT).show();
         }else if(category.length()>10){
@@ -93,17 +117,16 @@ public class MyDatabaseHelper {
         }else {
             try {
                 connect = connectToDb();
-                String query1 = String.format(
-                        "INSERT INTO recipes (name, favourite, health_rating, duration, category) " +
-                                "VALUES (%s, %d, %d, %s, %s);",name, favourite, health_rating, duration, category);
 
-                String query = "INSERT INTO recipes (name, favourite, health_rating, duration, category) VALUES (  ?, ?, ?, ?, ?)";
+
+                String query = "INSERT INTO recipes (name, favourite, health_rating, duration, category, instructions) VALUES (  ?, ?, ?, ?, ?, ?)";
                 PreparedStatement prestmt = connect.prepareStatement(query);
                 prestmt.setString(1,name);
                 prestmt.setInt(2,favourite);
                 prestmt.setInt(3,health_rating);
                 prestmt.setString(4,duration);
                 prestmt.setString(5,category);
+                prestmt.setBytes(6,instructions_bytesImage);
                 System.out.println(String.format("Submitting executeUpdate: %s",query));
                 prestmt.executeUpdate();
                 System.out.println(String.format("Submitted executeUpdate: %s",query));
@@ -113,7 +136,7 @@ public class MyDatabaseHelper {
                 executeUpdate method execute sql statements that insert/update/delete data at the database.
                  */
                 Toast.makeText(context, "Added succesfully!", Toast.LENGTH_SHORT).show();
-
+                System.out.println(String.format("addRecipe Success: %s",query));
             } catch (Exception e) {
                 Log.e("Error in addRecipe: ", e.getMessage());
                 Toast.makeText(context, "Failed - " + e.getMessage(), Toast.LENGTH_SHORT).show();
