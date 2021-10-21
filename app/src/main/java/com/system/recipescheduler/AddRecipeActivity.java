@@ -73,7 +73,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                         instructions_img);
 
                 //Refresh Activity
-                Intent intent = new Intent(AddRecipeActivity.this, MainActivity.class);
+                Intent intent = new Intent(AddRecipeActivity.this, CookbookActivity.class);
                 startActivity(intent);
                 finish();
             }

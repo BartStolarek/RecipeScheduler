@@ -33,14 +33,13 @@ public class CookbookActivity extends AppCompatActivity {
 
     MyDatabaseHelper myDB;
 
-    ArrayList<String> name, favourite, duration, category, health_rating;
+    ArrayList<String> recipe_id, name, favourite, duration, category, health_rating;
     CustomAdapter customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cookbook);
-
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
         empty_imageview = findViewById(R.id.empty_imageview);
@@ -55,7 +54,7 @@ public class CookbookActivity extends AppCompatActivity {
         });
 
         myDB = new MyDatabaseHelper(CookbookActivity.this);
-
+        recipe_id = new ArrayList<>();
         name = new ArrayList<>();
         favourite = new ArrayList<>();
         duration = new ArrayList<>();
@@ -64,29 +63,17 @@ public class CookbookActivity extends AppCompatActivity {
 
         storeDataInArrays();
 
-
-        customAdapter = new CustomAdapter(CookbookActivity.this, this, name, favourite, duration,
+        customAdapter = new CustomAdapter(CookbookActivity.this, this, recipe_id, name, favourite, duration,
                 category, health_rating);
 
-
-
         recyclerView.setAdapter(customAdapter);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(CookbookActivity.this));
-
-
     }
 
     void storeDataInArrays(){
         ResultSet rs = myDB.readAllData("recipes");
-
-
-
         if (rs != null) {
-
-
             try {
-
                 if (rs.next() == false) {
                     System.out.println("rs.next() == false");
                     empty_imageview.setVisibility(View.VISIBLE);
@@ -95,7 +82,7 @@ public class CookbookActivity extends AppCompatActivity {
                     empty_imageview.setVisibility(View.GONE);
                     no_data.setVisibility(View.GONE);
                     do {
-
+                        recipe_id.add(rs.getString("recipe_id"));
                         name.add(rs.getString("name"));
                         favourite.add(rs.getString("favourite"));
                         duration.add(rs.getString("duration"));
@@ -110,50 +97,33 @@ public class CookbookActivity extends AppCompatActivity {
         }else{
             System.out.println("ResultSet error: Result set obtained from readAllData = null");
         }
-
         myDB.closeConnection();
-
-
-
     }
 
-    // This is the method to connection to SQL server using the ConnectionHelper class
+    // This is the method to connect to SQL server using the ConnectionHelper class
     //Learnt from: https://www.youtube.com/watch?v=dYt763QgaTg
-
     public void GetTextFromSQL(View v){
         /*
         recipeID_text = findViewById(R.id.recipeID_text);
         recipe_name_text = findViewById(R.id.recipe_name_text);
         recipe_duration_text = findViewById(R.id.recipe_duration_text);
-
          */
-
         try{
             ConnectionHelper connectionHelper = new ConnectionHelper();
-
             Connection connect = connectionHelper.Connectionclass();
             if(connect!=null){
                 /*
                 String query = "SELECT * from recipes";
                 Statement st=connect.createStatement();
                 ResultSet rs = st.executeQuery(query);
-
-
-
                 while(rs.next()){
-
                     recipeID_text.setText(rs.getString(1));
                     recipe_name_text.setText(rs.getString(2));
                     recipe_duration_text.setText(rs.getString(3));
-
-
                 }
-
                  */
                 connect.close();
             }else{
-
-
                 System.out.println("Connect = null");
             }
         }catch(Exception e){
@@ -161,5 +131,4 @@ public class CookbookActivity extends AppCompatActivity {
         }
 
     }
-
 }

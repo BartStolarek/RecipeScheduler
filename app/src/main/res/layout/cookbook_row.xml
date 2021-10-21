@@ -22,18 +22,18 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/duration_txt"
+                    android:id="@+id/duration_txt_cookbook_row"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:layout_marginRight="16dp"
-                    android:layout_toRightOf="@id/health_rating_txt"
-                    android:layout_below="@id/name_txt"
+                    android:layout_toRightOf="@id/health_rating_txt_cookbook_row"
+                    android:layout_below="@id/name_txt_cookbook_row"
                     android:text="Duration"
                      />
 
                 <TextView
-                    android:id="@+id/name_txt"
+                    android:id="@+id/name_txt_cookbook_row"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Name"
@@ -44,31 +44,31 @@
                     />
 
                 <TextView
-                    android:id="@+id/category_txt"
+                    android:id="@+id/category_txt_cookbook_row"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/name_txt"
+                    android:layout_below="@id/name_txt_cookbook_row"
                     android:layout_marginRight="16dp"
                     android:text="Category" />
 
                 <TextView
-                    android:id="@+id/health_rating_txt"
+                    android:id="@+id/health_rating_txt_cookbook_row"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Health Rating"
-                    android:layout_below="@id/name_txt"
-                    android:layout_toRightOf="@id/category_txt"
+                    android:layout_below="@id/name_txt_cookbook_row"
+                    android:layout_toRightOf="@id/category_txt_cookbook_row"
                     android:layout_marginRight="16dp"/>
 
                 <ImageView
-                    android:id="@+id/favourite_image"
+                    android:id="@+id/favourite_image_cookbook_row"
                     android:layout_width="35dp"
                     android:layout_height="34dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
 
                     android:layout_marginEnd="16dp"
-                    android:layout_toRightOf="@id/name_txt"
+                    android:layout_toRightOf="@id/name_txt_cookbook_row"
                     app:srcCompat="@drawable/ic_favourite" />
             </RelativeLayout>
 

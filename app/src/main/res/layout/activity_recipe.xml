@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/favourite_txt_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_toRightOf="@id/name_txt_1_recipe"
+            android:text="favourite"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/name_txt_2_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name 2"
+            android:layout_below="@id/name_txt_1_recipe"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/category_txt_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_txt_2_recipe"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="category" />
+
+        <TextView
+            android:id="@+id/duration_txt_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="duration"
+            android:layout_below="@id/name_txt_2_recipe"
+            android:layout_toRightOf="@id/category_txt_recipe"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+        <ImageView
+            android:id="@+id/instructions_img_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_empty"
+            android:layout_below="@id/health_rating_txt_recipe"/>
+
+        <TextView
+            android:id="@+id/name_txt_1_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name 1"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/health_rating_txt_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="health_rating"
+            android:layout_below="@id/last_cook_txt_recipe"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/recipe_id_txt_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="recipe_id"
+            android:layout_below="@id/category_txt_recipe"
+            android:layout_toRightOf="@id/last_cook_txt_recipe"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/last_cook_txt_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="last_cook"
+            android:layout_below="@id/category_txt_recipe"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
