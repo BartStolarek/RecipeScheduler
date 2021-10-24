@@ -96,8 +96,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("duration", String.valueOf(dur));
                 intent.putExtra("category", String.valueOf(category.get(position)));
                 intent.putExtra("health_rating", String.valueOf(health_rating.get(position)));
-                System.out.println("startActivityForResult");
-                System.out.println("here!!!!!!!!!");
+                
                 activity.startActivityForResult(intent, 1);
             }
         });

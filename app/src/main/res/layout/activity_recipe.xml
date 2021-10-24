@@ -9,28 +9,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/favourite_txt_recipe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
 
-            android:layout_marginLeft="32dp"
-            android:layout_marginEnd="32dp"
+        <ImageView
+            android:id="@+id/favourite_image_recipe"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignTop="@id/name_txt_1_recipe"
+            android:layout_alignBottom="@id/name_txt_2_recipe"
+            android:layout_alignParentEnd="true"
             android:layout_toRightOf="@id/name_txt_1_recipe"
-            android:text="favourite"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"/>
+            android:gravity="right"
+            android:layout_marginRight="32dp"
+            app:srcCompat="@drawable/ic_favourite" />
 
         <TextView
             android:id="@+id/name_txt_2_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="name 2"
             android:layout_below="@id/name_txt_1_recipe"
             android:layout_marginLeft="32dp"
+            android:layout_marginTop="1dp"
             android:layout_marginRight="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginBottom="32dp"
+            android:text="name 2"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/category_txt_recipe"
@@ -63,14 +67,21 @@
             android:layout_below="@id/health_rating_txt_recipe"/>
 
         <TextView
+
             android:id="@+id/name_txt_1_recipe"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="name 1"
             android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"/>
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:autoSizeTextType="uniform"
+            android:maxLines="1"
+            android:text="name 1"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
 
         <TextView
             android:id="@+id/health_rating_txt_recipe"

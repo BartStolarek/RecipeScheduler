@@ -13,9 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RecipeActivity extends AppCompatActivity {
 
     //TODO: Design recipe card so i can see all the information of the recipe
+    // up to trying to figure out how to get the favourite star to not be overlapped by the textview name
 
     TextView recipe_id_txt, name_txt_1, name_txt_2, favourite_txt, health_rating_txt, duration_txt, category_txt, last_cook_txt;
-    ImageView instructions_img;
+    ImageView instructions_img, favourite_img;
     String recipe_id_string, name_string_1, name_string_2, favourite_string, health_rating_string, duration_string, category_string;
 
     @Override
@@ -26,7 +27,7 @@ public class RecipeActivity extends AppCompatActivity {
         recipe_id_txt = findViewById(R.id.recipe_id_txt_recipe);
         name_txt_1 = findViewById(R.id.name_txt_1_recipe);
         name_txt_2 = findViewById(R.id.name_txt_2_recipe);
-        favourite_txt = findViewById(R.id.favourite_txt_recipe);
+        favourite_img = findViewById(R.id.favourite_image_recipe);
         health_rating_txt = findViewById(R.id.health_rating_txt_recipe);
         duration_txt = findViewById(R.id.duration_txt_recipe);
         category_txt = findViewById(R.id.category_txt_recipe);
@@ -93,8 +94,8 @@ public class RecipeActivity extends AppCompatActivity {
             }
 
             favourite_string = getIntent().getStringExtra("favourite");
-            duration_string = getIntent().getStringExtra("duration");
-            category_string = getIntent().getStringExtra("category");
+            duration_string = getIntent().getStringExtra("duration") + " mins";
+            category_string = getIntent().getStringExtra("category").trim();
             health_rating_string = getIntent().getStringExtra("health_rating");
 
             //Setting Data from Intent
@@ -105,7 +106,12 @@ public class RecipeActivity extends AppCompatActivity {
             }else{
                 name_txt_2.setVisibility(View.GONE);
             }
-            favourite_txt.setText(favourite_string);
+            if(favourite_string.equals("1")){
+                favourite_img.setVisibility(View.VISIBLE);
+            }else{
+                favourite_img.setVisibility(View.GONE);
+            }
+
             duration_txt.setText(duration_string);
             category_txt.setText(category_string);
             health_rating_txt.setText(health_rating_string);
