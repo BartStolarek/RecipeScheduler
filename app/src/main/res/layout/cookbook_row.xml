@@ -34,12 +34,14 @@
 
                 <TextView
                     android:id="@+id/name_txt_cookbook_row"
-                    android:layout_width="wrap_content"
+                    android:layout_width="300sp"
                     android:layout_height="wrap_content"
                     android:text="Name"
                     android:textColor="#000"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:maxLines="1"
+                    android:autoSizeTextType="uniform"
                     android:layout_marginRight="16dp"
                     />
 

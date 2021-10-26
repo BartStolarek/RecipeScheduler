@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.ActionBar;
@@ -100,7 +101,9 @@ public class RecipeActivity extends AppCompatActivity {
 
             //Setting Data from Intent
             recipe_id_txt.setText(recipe_id_string);
+
             name_txt_1.setText(name_string_1);
+
             if(name_string_2 != null){
                 name_txt_2.setText(name_string_2);
             }else{
