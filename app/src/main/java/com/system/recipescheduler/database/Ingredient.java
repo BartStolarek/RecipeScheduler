@@ -7,52 +7,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ingredient {
-    private int id;
-    private String name;
-    private String surname;
 
 
+
+    private String ingredient_name;
     private String recipe_id;
     private String ingredient_id;
     private String quantity;
     private String category;
     private String base_measurement;
 
-    // getters and setters
 
     public List<Ingredient> getAllFromRecipe(String recipe_id) {
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
-        Ingredient u = null;
+        Ingredient i = null;
         int recipe_id_int = Integer.parseInt(recipe_id);
 
         // initialise connection etc.
         MyDatabaseHelper db = new MyDatabaseHelper();
-        String query = String.format("SELECT * " +
+        String query = String.format("SELECT iq.recipe_id,iq.ingredient_id, iq.quantity, i.category, i.base_measurement, i.ingredient_name" +
                 "FROM ingredient_quantity as iq INNER JOIN ingredients as i on (iq.ingredient_id = i.ingredient_id) " +
                 "WHERE recipe_id LIKE '%%%s%%'",recipe_id_int);
         ResultSet resultSet = db.selectQuery(query);
         try {
             while (resultSet.next()) {
-                u = new User();
-                u.setId(resultSet.getInt(1));
-                u.setName(resultSet.getString(2));
-                u.setSurname(resultSet.getString(3));
-                ingredients.add(u);
+                i = new Ingredient();
+                i.setRecipe_id(resultSet.getString(1));
+                i.setIngredient_id(resultSet.getString(2));
+                i.setQuantity(resultSet.getString(3));
+                i.setCategory(resultSet.getString(4));
+                i.setBase_measurement(resultSet.getString(5));
+                i.setIngredient_name(resultSet.getString(6));
+                ingredients.add(i);
             }
         }catch(Exception e){
             Log.e("Error getAllFromRecipe: ",e.getMessage());
             return null;
         }
+        db.closeConnection();
         return ingredients;
         // in finally block close connection.
     }
 
-    public String getName() {
-        return name;
+    public String getIngredient_name() {
+        return ingredient_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIngredient_name(String ingredient_name) {
+        this.ingredient_name = ingredient_name;
     }
 
     public String getRecipe_id() {

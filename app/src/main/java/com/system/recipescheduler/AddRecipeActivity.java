@@ -29,6 +29,7 @@ import java.util.List;
 
 public class AddRecipeActivity extends AppCompatActivity {
 
+    //TODO: Add ingredients adding section
 
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 0;
     EditText name_input, health_input, duration_input, category_input, favourite_input;

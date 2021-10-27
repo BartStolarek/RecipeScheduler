@@ -13,8 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipeActivity extends AppCompatActivity {
 
-    //TODO: Design recipe card so i can see all the information of the recipe
-    // up to trying to figure out how to get the favourite star to not be overlapped by the textview name
+    //TODO: Add ingredient listview or whatever, but first i need to add ingredient stuff in the add activity
 
     TextView recipe_id_txt, name_txt_1, name_txt_2, favourite_txt, health_rating_txt, duration_txt, category_txt, last_cook_txt;
     ImageView instructions_img, favourite_img;
