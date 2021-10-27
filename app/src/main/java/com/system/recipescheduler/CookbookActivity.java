@@ -53,7 +53,7 @@ public class CookbookActivity extends AppCompatActivity {
             }
         });
 
-        myDB = new MyDatabaseHelper(CookbookActivity.this);
+        myDB = new MyDatabaseHelper();
         recipe_id = new ArrayList<>();
         name = new ArrayList<>();
         favourite = new ArrayList<>();

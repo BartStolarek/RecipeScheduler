@@ -21,10 +21,10 @@ public class MyDatabaseHelper {
     private Connection connect;
 
 
-    public MyDatabaseHelper(@Nullable Context context) {
-        this.context = context;
+    public MyDatabaseHelper() {
 
-
+        //connect
+        connect = connectToDb();
     }
 
     /*
@@ -165,16 +165,23 @@ public class MyDatabaseHelper {
         return connect;
     }
 
+    public ResultSet selectQuery(String query){
+        ResultSet rs = null;
+        try{
+            connect = connectToDb();
+            if(connect!=null){
+                Statement st = connect.createStatement();
+                rs = st.executeQuery(query);
+            }else{
+                System.out.println("Error selectQuery: connection is null");
+            }
+        }catch(Exception e){
+            Log.e("Error selectQuery: ",e.getMessage());
+        }
+        return rs;
+    }
     public ResultSet readAllData(String table_name){
         ResultSet rs = null;
-
-        /*
-        //Map<String, Object> is just a key and value object stored together, like json.
-        //List<Map<String, Object>> is just a list of key,value objects.
-        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
-        Map<String, Object> row = null;
-
-         */
         try {
 
             connect = connectToDb();
@@ -182,28 +189,12 @@ public class MyDatabaseHelper {
                 String query = String.format("SELECT * from %s", table_name);
                 Statement st = connect.createStatement();
                 rs = st.executeQuery(query);
-
-                /*
-                ResultSetMetaData metaData = rs.getMetaData();
-                Integer columnCount = metaData.getColumnCount();
-
-                while (rs.next()) {
-                    row = new HashMap<String, Object>();
-                    for (int i = 1; i <= columnCount; i++) {
-                        row.put(metaData.getColumnName(i), rs.getObject(i));
-                    }
-                    resultList.add(row);
-                }
-
-                 */
-
                 return rs;
-
             } else {
-                System.out.println("Error creating/executing on SQL database: connection is null");
+                System.out.println("Error readAllData: connection is null");
             }
         }catch(Exception e){
-            Log.e("Error creating/executing on SQL database: ", e.getMessage());
+            Log.e("Error readAllData: ", e.getMessage());
         }
         return rs;
     }

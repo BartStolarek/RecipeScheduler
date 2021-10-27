@@ -64,7 +64,7 @@ public class AddRecipeActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(AddRecipeActivity.this);
+                MyDatabaseHelper myDB = new MyDatabaseHelper();
                 myDB.addRecipe(name_input.getText().toString().trim(),
                         Integer.parseInt(health_input.getText().toString().trim()),
                         duration_input.getText().toString().trim(),
