@@ -29,7 +29,7 @@ import java.util.List;
 
 public class AddRecipeActivity extends AppCompatActivity {
 
-    //TODO: Add ingredients adding section
+    //TODO: Add ingredients adding section, maybe add it as a new activity to be loaded after you hit add.
 
     private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 0;
     EditText name_input, health_input, duration_input, category_input, favourite_input;
@@ -74,7 +74,7 @@ public class AddRecipeActivity extends AppCompatActivity {
                         instructions_img);
 
                 //Refresh Activity
-                Intent intent = new Intent(AddRecipeActivity.this, CookbookActivity.class);
+                Intent intent = new Intent(AddRecipeActivity.this, AddIngredientsActivity.class);
                 startActivity(intent);
                 finish();
             }

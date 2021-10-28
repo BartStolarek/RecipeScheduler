@@ -45,6 +45,10 @@
             android:label="Recipe"
             android:parentActivityName=".CookbookActivity"
             />
+        <activity android:name=".AddIngredientsActivity"
+            android:label="Ingredients"
+            android:parentActivityName-=".AddRecipeActivity"
+            />
     </application>
 
 </manifest>
