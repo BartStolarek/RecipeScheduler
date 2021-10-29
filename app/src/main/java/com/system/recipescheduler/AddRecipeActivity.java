@@ -66,17 +66,30 @@ public class AddRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper();
-                myDB.addRecipe(name_input.getText().toString().trim(),
-                        Integer.parseInt(health_input.getText().toString().trim()),
-                        duration_input.getText().toString().trim(),
-                        category_input.getText().toString().trim(),
-                        Integer.parseInt(favourite_input.getText().toString().trim()),
-                        instructions_img);
+                if(name_input.getText().toString().equals("") ||
+                        health_input.getText().toString().equals("") ||
+                        duration_input.getText().toString().equals("") ||
+                        category_input.getText().toString().equals("") ||
+                        favourite_input.getText().toString().equals("")){
+                    System.out.println("add_button error: One or more fields is empty");
 
-                //Refresh Activity
-                Intent intent = new Intent(AddRecipeActivity.this, AddIngredientsActivity.class);
-                startActivity(intent);
-                finish();
+                    Toast.makeText(AddRecipeActivity.this, "Field can not be empty - ensure all fields are filled in", Toast.LENGTH_LONG).show();
+
+
+                }else {
+                    myDB.addRecipe(name_input.getText().toString().trim(),
+                            Integer.parseInt(health_input.getText().toString().trim()),
+                            duration_input.getText().toString().trim(),
+                            category_input.getText().toString().trim(),
+                            Integer.parseInt(favourite_input.getText().toString().trim()),
+                            instructions_img);
+
+
+                    //Refresh Activity
+                    Intent intent = new Intent(AddRecipeActivity.this, AddIngredientsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

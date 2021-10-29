@@ -10,12 +10,8 @@ public class Ingredient {
 
 
 
-    private String ingredient_name;
-    private String recipe_id;
-    private String ingredient_id;
-    private String quantity;
-    private String category;
-    private String base_measurement;
+    private String ingredient_name, ingredient_id, quantity, category, base_measurement, recipe_measurement;
+
 
 
     public List<Ingredient> getAllFromRecipe(String recipe_id) {
@@ -32,7 +28,7 @@ public class Ingredient {
         try {
             while (resultSet.next()) {
                 i = new Ingredient();
-                i.setRecipe_id(resultSet.getString(1));
+
                 i.setIngredient_id(resultSet.getString(2));
                 i.setQuantity(resultSet.getString(3));
                 i.setCategory(resultSet.getString(4));
@@ -40,13 +36,13 @@ public class Ingredient {
                 i.setIngredient_name(resultSet.getString(6));
                 ingredients.add(i);
             }
+            return ingredients;
         }catch(Exception e){
             Log.e("Error getAllFromRecipe: ",e.getMessage());
             return null;
+        }finally{
+            db.closeConnection();
         }
-        db.closeConnection();
-        return ingredients;
-        // in finally block close connection.
     }
 
     public String getIngredient_name() {
@@ -57,13 +53,6 @@ public class Ingredient {
         this.ingredient_name = ingredient_name;
     }
 
-    public String getRecipe_id() {
-        return recipe_id;
-    }
-
-    public void setRecipe_id(String recipe_id) {
-        this.recipe_id = recipe_id;
-    }
 
     public String getIngredient_id() {
         return ingredient_id;
@@ -96,4 +85,8 @@ public class Ingredient {
     public void setBase_measurement(String base_measurement) {
         this.base_measurement = base_measurement;
     }
+
+    public String getRecipe_measurement() { return recipe_measurement; }
+
+    public void setRecipe_measurement(String recipe_measurement) {this.recipe_measurement = recipe_measurement; }
 }
