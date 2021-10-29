@@ -32,9 +32,10 @@ public class AddIngredientsActivity extends AppCompatActivity {
         listView = findViewById(R.id.listview_item);
 
         ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-
-        CustomAdapterListView customAdapterListView = new CustomAdapterListView(AddIngredientsActivity.this,ingredients);
-        listView.setAdapter(customAdapterListView);
+        if(ingredients.size()>0) {
+            CustomAdapterListView customAdapterListView = new CustomAdapterListView(AddIngredientsActivity.this, ingredients);
+            listView.setAdapter(customAdapterListView);
+        }
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
