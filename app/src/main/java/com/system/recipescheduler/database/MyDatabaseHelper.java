@@ -21,9 +21,14 @@ public class MyDatabaseHelper {
     private Connection connect;
 
 
-    public MyDatabaseHelper() {
+    public MyDatabaseHelper(Context context) {
 
+        this.context = context;
         //connect
+        connect = connectToDb();
+    }
+
+    public MyDatabaseHelper(){
         connect = connectToDb();
     }
 
@@ -81,7 +86,7 @@ public class MyDatabaseHelper {
             }
             connect.close();
         }catch(Exception e){
-            Log.e("checkRecipeNameDuplicate Error: ", e.getMessage());
+            Log.e("MyDatabaseHelper - recipeNameDuplicates: ", e.getMessage());
         }
 
         System.out.println(String.format("recipeNameDuplicates Success: duplicate exists - %s", duplicate));
@@ -138,7 +143,7 @@ public class MyDatabaseHelper {
                 Toast.makeText(context, "Added succesfully!", Toast.LENGTH_SHORT).show();
                 System.out.println(String.format("addRecipe Success: %s",query));
             } catch (Exception e) {
-                Log.e("Error in addRecipe: ", e.getMessage());
+                Log.e("MyDatabaseHelper - addRecipe: ", e.getMessage());
                 Toast.makeText(context, "Failed - " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
@@ -151,16 +156,16 @@ public class MyDatabaseHelper {
         try {
             connect.close();
         }catch(Exception e){
-            Log.e("Error Closing Connection: ", e.getMessage());
+            Log.e("MyDatabaseHelper - closeConnection: ", e.getMessage());
         }
     }
 
     private Connection connectToDb(){
         try{
             connectionHelper = new ConnectionHelper();
-            connect = connectionHelper.Connectionclass();
+            connect = connectionHelper.Connectionclass(context);
         }catch(Exception e){
-            Log.e("Connection to DB failed: ", e.getMessage());
+            Log.e("MyDatabaseHelper - connectToDb: ", e.getMessage());
         }
         return connect;
     }
@@ -176,7 +181,7 @@ public class MyDatabaseHelper {
                 System.out.println("Error selectQuery: connection is null");
             }
         }catch(Exception e){
-            Log.e("Error selectQuery: ",e.getMessage());
+            Log.e("MyDatabaseHelper - selectQuery: ",e.getMessage());
         }
         return rs;
     }
@@ -191,10 +196,10 @@ public class MyDatabaseHelper {
                 rs = st.executeQuery(query);
                 return rs;
             } else {
-                System.out.println("Error readAllData: connection is null");
+                System.out.println("MyDatabaseHelper - readAllData: connection is null");
             }
         }catch(Exception e){
-            Log.e("Error readAllData: ", e.getMessage());
+            Log.e("MyDatabaseHelper - readAllData: ", e.getMessage());
         }
         return rs;
     }

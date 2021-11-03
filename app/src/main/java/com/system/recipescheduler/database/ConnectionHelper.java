@@ -1,23 +1,32 @@
 package com.system.recipescheduler.database;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.wifi.WifiManager;
 import android.os.StrictMode;
+import android.text.format.Formatter;
 import android.util.Log;
 import java.sql.Driver;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import static android.content.Context.WIFI_SERVICE;
+import static androidx.core.content.ContextCompat.getSystemService;
+import static com.google.android.material.internal.ContextUtils.getActivity;
+
 public class ConnectionHelper {
 
     //https://www.youtube.com/watch?v=dYt763QgaTg
     Connection connection;
     String uname, pass, ip, port, database;
+    Context context;
 
     @SuppressLint("NewApi")
-    public Connection Connectionclass(){
-        System.out.println("Inside connection class");
-        ip = "10.0.2.2"; //Got 10.0.2.2 from here: https://stackoverflow.com/questions/44790597/android-database-network-error-ioexception
+    public Connection Connectionclass(Context context){
+
+        this.context = context;
+        ip = getIPAddress(); // 10.0.2.2 was ip address of virtual device, from here: https://stackoverflow.com/questions/44790597/android-database-network-error-ioexception
         database="RecipeSchedulerDb";
         uname="bartjs";
         pass="fusion93";
@@ -41,12 +50,26 @@ public class ConnectionHelper {
             ConnectionURL= "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+ "databasename="+ database+";user="+uname+";password="+pass+";";
 
             connection = DriverManager.getConnection(ConnectionURL);
-            System.out.println("Used DriverManager to get connection via connection URL ");
+            System.out.println("Connection obtained");
         }catch(Exception e){
-            Log.e("Connection Error is ", e.getMessage());
+            Log.e("ConnectionHelper - ConnectionClass: ", e.getMessage());
         }
         System.out.println("Returning connection");
         return connection;
 
+    }
+
+
+
+    public String getIPAddress(){
+        String ipAddress = null;
+        try {
+            WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+            ipAddress = Formatter.formatIpAddress(wifiManager.getConnectionInfo().getIpAddress());
+            System.out.println("Obtained IP address: " + ipAddress);
+        }catch(Exception e){
+            Log.e("ConnectionHelper - getIPAddress: ", e.getMessage());
+        }
+        return ipAddress;
     }
 }

@@ -40,7 +40,7 @@ public class AddIngredientsActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyDatabaseHelper db = new MyDatabaseHelper();
+                MyDatabaseHelper db = new MyDatabaseHelper(AddIngredientsActivity.this);
                 Ingredient ingredient = new Ingredient();
 
                 String query = String.format("SELECT ingredient_name, base_measurement, category, ingredient_id " +

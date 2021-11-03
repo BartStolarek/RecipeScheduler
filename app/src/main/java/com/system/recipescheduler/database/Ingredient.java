@@ -14,6 +14,7 @@ public class Ingredient {
 
 
 
+
     public List<Ingredient> getAllFromRecipe(String recipe_id) {
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
         Ingredient i = null;

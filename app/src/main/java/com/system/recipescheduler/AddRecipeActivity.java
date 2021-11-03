@@ -79,7 +79,7 @@ public class AddRecipeActivity extends AppCompatActivity {
 
 
                 } else {
-                    MyDatabaseHelper myDB = new MyDatabaseHelper();
+                    MyDatabaseHelper myDB = new MyDatabaseHelper(AddRecipeActivity.this);
                     try {
                     //TODO: remove the database recipe add from here, and instead pass this stuff to add ingredients activity through the intent method.
                         myDB.addRecipe(name_input.getText().toString().trim(),

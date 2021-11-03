@@ -53,7 +53,7 @@ public class CookbookActivity extends AppCompatActivity {
             }
         });
 
-        myDB = new MyDatabaseHelper();
+        myDB = new MyDatabaseHelper(CookbookActivity.this);
         recipe_id = new ArrayList<>();
         name = new ArrayList<>();
         favourite = new ArrayList<>();
@@ -102,33 +102,11 @@ public class CookbookActivity extends AppCompatActivity {
 
     // This is the method to connect to SQL server using the ConnectionHelper class
     //Learnt from: https://www.youtube.com/watch?v=dYt763QgaTg
-    public void GetTextFromSQL(View v){
-        /*
-        recipeID_text = findViewById(R.id.recipeID_text);
-        recipe_name_text = findViewById(R.id.recipe_name_text);
-        recipe_duration_text = findViewById(R.id.recipe_duration_text);
-         */
-        try{
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            Connection connect = connectionHelper.Connectionclass();
-            if(connect!=null){
-                /*
-                String query = "SELECT * from recipes";
-                Statement st=connect.createStatement();
-                ResultSet rs = st.executeQuery(query);
-                while(rs.next()){
-                    recipeID_text.setText(rs.getString(1));
-                    recipe_name_text.setText(rs.getString(2));
-                    recipe_duration_text.setText(rs.getString(3));
-                }
-                 */
-                connect.close();
-            }else{
-                System.out.println("Connect = null");
-            }
-        }catch(Exception e){
-            Log.e("GetTextFrom SQL Error is ", e.getMessage());
-        }
+    public void GetTextFromSQL(View v) {
+
 
     }
+
+
+
 }
